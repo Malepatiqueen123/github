@@ -1,0 +1,42 @@
+1.Create 10 Partitions each 1 GB using /dev/sdd and create 5 partitions each 1 GB using /dev/sdc
+  a)Create a volume group with 5 physical volumes
+    vgname: mediavg
+    pvs: /dev/sdd1 /dev/sdd2 /dev/sdd3 /dev/sdd4 /dev/sdd5
+    pe size: 4MB
+  b)Create three xfs file systems each 512MB using /dev/sdd1 and /dev/sdd2 and mount them /mfs01 and /mfs02 respectivty. Make mount definitions in /etc/fstab for future automatic mounts.
+  c)create logical volume namely menslv01 of size 512MB
+2.
+  a)Create logsvg using /dev/sdc3 /dev/sdc4 /dev/sdc5
+  b)Create an lv with name slab01 and create ext4 filesydtem using it and mount it on /slab01. Make the mount persistent.
+  c)Set logs vg with below attributes
+    Max Pvs: 3
+    Max Lvs: 5
+    Resizable: No
+  d)set /dev/sdc5 not allocatable.
+  
+3.
+  Rename mediavg to cloudvg. Take care of LV paths for the previously defined filesystem incase if required.Once you are done, reboot and test if your server boots without having issues with /etc/fstab entries.
+  
+4. 
+  a)Move contents of /dev/sdd1 to /dev/sdd5
+  c)Create a logical volume with name 'storelv' of size 512MB 
+  d)Increase LV menslv01 to become 1GB
+  e)scan for 
+     i)eligible lvm disks
+     ii)volume group
+    iii)logical volumes
+     iv)Physical volumes
+  f)Redule LV size storelv to become 128MB
+5.
+  a)Write a script to create a volume group using given pv. Take inputs vgname, pvname, pe size from keyboard.
+  b)Write a script to create an xfs filesystem. Your script should create an lv and mount it with a given mount point. All required inputs must be taken from keyboard.
+  c)print detailed informaton of pv and vg. Take inputs from keyboard.
+
+
+  
+  
+    
+ 
+  
+      
+    
